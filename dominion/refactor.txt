@@ -1,0 +1,3 @@
+I refactor 5 cases statements into indivdual functions: fadventurer, fcouncil_room, ffeast, fgardens, and fmine.
+I pretty much copied the codes from each cases and pasted them into the correct functions. In addition, I have to 
+set up the right parameters for each functions in order to compile. 
