@@ -16,7 +16,7 @@ int my_assert(int x, char* message){
 
 void check_asserts(){
     if(!failure){
-        printf("Tested successfully");
+        printf("Tested successfully\n");
     }else{
         printf("Test fails");
     }
@@ -32,7 +32,8 @@ int main(){
         initializeGame(MIN_NUM_PLAYER, k_cards, 8, gameState);
 
         turn = endTurn(gameState);
-                my_assert(turn != -1, "Error, unable to end turn");
+        my_assert(turn != -1, "Error, unable to end turn");
 
+		printf("Test Successfully");
         return 0;
 }

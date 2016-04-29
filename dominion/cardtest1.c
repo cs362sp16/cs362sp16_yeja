@@ -22,7 +22,7 @@ void check_asserts(){
 }
 //testing for the card: Smithy
 int main(){
-    printf("=====Testing for the card: Smithy=====");
+    printf("=====Testing for the card: Smithy=====\n");
 
     struct gameState g;
 
@@ -39,6 +39,8 @@ int main(){
     playCard(0,0,0,0,&g);
     my_assert(g.handCount[0], "Player has drawn 3 cards by using Smithy");
     my_assert(g.hand[0][0] != smithy, "Smithy has been removed from player's hand");
+
+	printf("Test Successfully\n");
 
     return 0;
 }

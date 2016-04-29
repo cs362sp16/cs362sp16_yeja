@@ -15,10 +15,10 @@ int my_assert(int x, char* message){
 
 void check_asserts(){
 	if (!failure){
-		printf("Tested successfully");
+		printf("Tested successfully\n");
 	}
 	else{
-		printf("Test fails");
+		printf("Test fails\n");
 	}
 }
 

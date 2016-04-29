@@ -6,7 +6,7 @@ int failure = 0;
 
 int my_assert(int x, char* message){
     if(x == 0){
-        printf("assertion failed %\n",message);
+        printf("assertion failed \n",message);
         failure = 1;
     }
 }
@@ -47,6 +47,8 @@ int main(){
     }else{
         printf("Not enough coins to buy");
     }
+
+	printf("Test Successfully \n");
     return 0;
 }
 

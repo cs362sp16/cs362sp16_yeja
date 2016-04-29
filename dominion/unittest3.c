@@ -14,7 +14,7 @@ int my_assert(int x, char* message){
 
 void check_asserts(){
     if(!failure){
-        printf("Tested successfully");
+        printf("Tested successfully\n");
     }else{
         printf("Test fails");
     }
@@ -34,6 +34,6 @@ int main(){
     if(failure == 0){
         printf("No Error found in card supply");
     }
-
+	//printf("Test Successfully");
     return 0;
 }
