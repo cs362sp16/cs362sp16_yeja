@@ -1,0 +1,12 @@
+After compiling all the unit tests and card test, every tests run successfully. 
+
+Test Report:
+
+File 'dominion.c'
+Lines executed:41.59% of 553
+Creating 'dominion.c.gcov'
+
+File 'playdom.c'
+Lines executed:100.00% of 94
+Creating 'playdom.c.gcov'
+
