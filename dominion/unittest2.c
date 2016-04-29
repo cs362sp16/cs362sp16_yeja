@@ -9,7 +9,10 @@ int my_assert(int x, char* message){
     if(x == 0){
         printf("assertion failed %\n",message);
         failure = 1;
-    }
+	}
+	else{
+		printf("Test Successfully\n");
+	}
 }
 
 void check_asserts(){
@@ -23,26 +26,16 @@ void check_asserts(){
 //testing for whoseTurn test #2
 int main(){
 
-    int k_cards[] = {smithy, adventurer, gardens, embargo, cutpurse, mine, ambassador, outpost, baron, tribute};
-
     struct gameState g;
-    struct gameState *gameState = newGame();
-    int turn;
-    initializeGame(MIN_NUM_PLAYER, k_cards, 8, gameState);
+    //struct gameState *gameState = newGame();
+	int k_cards[] = { smithy, adventurer, gardens, embargo, cutpurse, mine, ambassador, outpost, baron, tribute };
 
-    g.whoseTurn = 9;
-    my_assert(whoseTurn(&g) != 9, "Too many players!");
+    initializeGame(MIN_NUM_PLAYER, k_cards, 5, &g);
 
-    g.whoseTurn = -2;
-    my_assert(whoseTurn(&g) != -2, "Too small, the value has become invalid");
+	int x = whoseTurn(&g);
+	my_assert((x == 0), "whoseTurn did not recognize the turn appropriately!\n");
 
-    g.whoseTurn = 1;
-    my_assert(whoseTurn(&g) == 1, "Correct value");
-
-    turn = whoseTurn(gameState);
-    my_assert(turn == 1, "The next player's turn is incorrect");
-    turn = whoseTurn(gameState);
-    my_assert(turn == 0, "Not the correct starting player's turn");
+	
 
     return 0;
 }

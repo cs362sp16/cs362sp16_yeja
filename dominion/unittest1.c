@@ -30,22 +30,22 @@ int main(){
     int buyCards = buyCard(copper, &g);
 
     if(buyCards == 0){
-        printf("Buy Successfully");
+        printf("Buy Successfully\n");
     }else{
-        printf("Fail to buy");
+        printf("Fail to buy\n");
     }
     int previousBuys = g.numBuys;
     int previousCoins = g.coins;
 
     if(g.numBuys == (previousBuys - 1)){
-        printf("Buy Successfully");
+        printf("Buy Successfully\n");
     }else{
         printf("Fail to buy");
     }
     if(g.coins == (previousCoins - (getCost(copper)))){
-        printf("Buy Successfully");
+        printf("Buy Successfully\n");
     }else{
-        printf("Not enough coins to buy");
+        printf("Not enough coins to buy\n");
     }
 
 	printf("Test Successfully \n");

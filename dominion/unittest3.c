@@ -32,7 +32,7 @@ int main(){
         printf("Correct supplyCount\n");
     }
     if(failure == 0){
-        printf("No Error found in card supply");
+        printf("No Error found in card supply\n");
     }
 	//printf("Test Successfully");
     return 0;

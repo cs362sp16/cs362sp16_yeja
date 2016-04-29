@@ -11,6 +11,9 @@ int my_assert(int x, char* message){
 		printf("assertion failed %\n", message);
 		failure = 1;
 	}
+	else{
+		printf("Test Successfully\n");
+	}
 }
 
 void check_asserts(){

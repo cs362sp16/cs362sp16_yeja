@@ -10,7 +10,10 @@ int my_assert(int x, char* message){
     if(x == 0){
         printf("assertion failed %\n",message);
         failure = 1;
-    }
+	}
+	else{
+		printf("Test Successfully\n");
+	}
 }
 
 void check_asserts(){
