@@ -28,16 +28,15 @@ int main(){
 	struct gameState g;
 
 	int k[10] = {minion, adventurer, gardens, embargo, cutpurse, mine, ambassador, outpost, baron, tribute };
-
+	int i;
 	initializeGame(MIN_PLAYERS, k, 5, &g);
 
 	g.hand[0][0] = minion;
-	for (int i = 0; i < 5; i++){
+	for (i = 0; i < 5; i++){
 		drawCard(1, &g);
 	}
 	cardEffect(minion, -1, 0, -1, &g, 0, -1);
 	my_assert(g.handCount[0] != 8, "Other player has discard hand and draw 4 new cards");
-	my_assert(g.handCount[1] != 4, "You discard a card and draw 4 new cards")
-
+	my_assert(g.handCount[1] != 4, "You discard a card and draw 4 new cards");
 
 }

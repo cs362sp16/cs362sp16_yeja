@@ -26,7 +26,7 @@ int main(){
 
     int k[10] = {smithy,adventurer,gardens,embargo,cutpurse,mine,ambassador,outpost,baron,tribute};
 
-    int r = initializeGame(2, k, 5, &g);
+	initializeGame(2, k, 5, &g);
     int buyCards = buyCard(copper, &g);
 
     if(buyCards == 0){
@@ -40,7 +40,7 @@ int main(){
     if(g.numBuys == (previousBuys - 1)){
         printf("Buy Successfully");
     }else{
-        print("Fail to buy");
+        printf("Fail to buy");
     }
     if(g.coins == (previousCoins - (getCost(copper)))){
         printf("Buy Successfully");
