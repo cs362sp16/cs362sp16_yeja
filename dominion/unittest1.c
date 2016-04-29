@@ -34,8 +34,10 @@ int main(){
     }else{
         printf("Fail to buy");
     }
+    int previousBuys = g.numBuys;
     int previousCoins = g.coins;
 
+    if(g.numBuys == (previousBuys - 1)){
         printf("Buy Successfully");
     }else{
         print("Fail to buy");
