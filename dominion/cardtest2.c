@@ -36,5 +36,8 @@ int main(){
      drawCard(g.whoseTurn, &g);
      g.numActions++;
 
+	 my_assert(g.handCount[0] = g.numActions, "Player has drawn 1 cards by using great_hall");
+	 my_assert(g.hand[0][0] != great_hall, "great_hall has been removed from player's hand");
+
     return 0;
 }

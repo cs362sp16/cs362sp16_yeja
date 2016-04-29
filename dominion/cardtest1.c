@@ -39,7 +39,6 @@ int main(){
     playCard(0,0,0,0,&g);
     my_assert(g.handCount[0], "Player has drawn 3 cards by using Smithy");
     my_assert(g.hand[0][0] != smithy, "Smithy has been removed from player's hand");
-    my_assert(g.hand[0][0] == smithy, "Smithy did not removed from player's hand");
 
     return 0;
 }
