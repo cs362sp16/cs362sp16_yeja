@@ -18,7 +18,7 @@ int my_assert(int x, int y, char* message){
         failure = 1;
 	}
 	else{
-		printf("Test Successfully\n");
+		printf("Random Generated Successfully\n");
 	}
 }
 

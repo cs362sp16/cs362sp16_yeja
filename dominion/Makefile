@@ -41,19 +41,15 @@ cardtest4: cardtest4.c dominion.o
 	
 all: playdom player
 
-randomtestresultout:
-	./randomtestadventurer &> randomtestadventurer.out
-	gcov dominion.c >> randomtestadventurer.out
-	cat dominion.c.gcov >> randomtestadventurer.out
+randomtestadventurer:
+	gcc -o randomtestadventurer randomtestadventurer.c -g dominion.o rngs.o $(CFLAGS)
 
-	./randomtestcard1 &> randomtestcard1.out
-	gcov dominion.c >> randomtestcard1.out
-	cat dominion.c.gcov >> randomtestcard1.out
+randomtestcard1:
+	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.c randomtestcard1.c rngs.c -o randomtestcard1 -lm -g	
 
-	./randomtestcard2 &> randomtestcard2.out
-	gcov dominion.c >> randomtestcard2.out
-	cat dominion.c.gcov >> randomtestcard2.out
-
+randomtestcard2:
+	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.c randomtestcard2.c rngs.c -o randomtestcard2 -lm -g 
+	
 unittestresults.out: unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 playdom
 	./unittest1 >> unittestresults.out
 	echo "UNITTEST 1" >> unittestresults.out
@@ -91,6 +87,19 @@ unittestresults.out: unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2
 	./playdom 3 >> unittestresults.out
 	echo "GCOV AFTER PLAYING A GAME" >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
-
+	
+randomtestresult.out: randomtestadventurer randomtestcard1 randomtestcard2 playdom
+	./randomtestadventurer >> randomtestadventurer.out
+	echo "CARD TEST FOR ADVENTURER: " >> randomtestresult.out
+	gcov dominion.c >> randomtestadventurer.out
+	
+	./randomtestcard1 >> randomtestcard1.out
+	echo "CARD TEST FOR CUTPURSE: " >> randomtestresult.out
+	gcov dominion.c >> randomtestcard1.out
+	
+	./randomtestcard2 >> randomtestcard2.out
+	echo "CARD TEST FOR SMITHY: " >> randomtestresult.out
+	gcov dominion.c >> randomtestcard2.out
+	
 clean:
 	rm -f *.o playdom.exe playdom test.exe test player unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 player.exe testInit testInit.exe *.gcov *.gcda *.gcno *.so *.a *.dSYM

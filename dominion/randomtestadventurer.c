@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 #include <time.h>
 #include "dominion.h"
 #include "dominion_helpers.h"
@@ -15,13 +16,12 @@ int success = 0;
 int main(int argc, char* argv[]){
 
     int numPlayer = rand() % 4;
-
     struct gameState G;
-    int i, j, newCard;
+    int i, j, newCard, cdeck;
     int treasureCardDrawn[MAX_PLAYER] = {0};
 
     int k[10] = {adventurer, gardens, embargo, village, steward, mine, cutpurse, sea_hag, tribute, smithy};
-    initializedGame(numPlayer, k, seed, &G);
+    initializeGame(numPlayer, k, rand(), &G);
 
     for(i = 0; i < numPlayer; i++){
         cdeck = rand()% 45;
@@ -37,18 +37,17 @@ int main(int argc, char* argv[]){
             }
         }
     }
-
+	
     for(i=0;i < NUM_TEST;i++){
 
-    			seed = rand();
-    			initializeGame(numPlayer,k,seed,&G);
+    			initializeGame(numPlayer,k,rand(),&G);
 
     			G.deckCount[numPlayer] = rand() % MAX_DECK;
     			G.discardCount[numPlayer] = rand() % MAX_DECK;
 
-    			deckCount = G.deckCount[numPlayer];
+    			int deckCount = G.deckCount[numPlayer];
 
-    			cardEffect(adventurer,1,1,1,&G);
+    			cardEffect(adventurer,1,1,1,&G,0,0);
     }
 
     printf("Random Testing for Adventurer Card Complete \n");

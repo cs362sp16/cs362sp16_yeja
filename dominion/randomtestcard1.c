@@ -18,7 +18,7 @@ int my_assert(int x, char* message){
         failure = 1;
 	}
 	else{
-		printf("Test Successfully\n");
+		printf("Random Generated Successfully\n");
 	}
 }
 
@@ -47,7 +47,7 @@ int main(int argc, char* argv[]){
     printf("Testing the card Cutpurse by randmom generation");
 
 	for (i = 0; i < NUM_TEST; i++){
-        j = initializedGame(((numPlayer) + 1), k, rand(), &G);
+        j = initializeGame(((numPlayer) + 1), k, rand(), &G);
         j = cardEffect(cutpurse, state1, state2, state3, &G, 0, 0);
 
         my_assert(j == 0, "Random Testing failed");
