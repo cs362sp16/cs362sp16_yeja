@@ -38,19 +38,21 @@ cardtest3: cardtest3.c dominion.o
 
 cardtest4: cardtest4.c dominion.o
 	gcc -o cardtest4 cardtest4.c -g dominion.o rngs.o $(CFLAGS) 
+	
+all: playdom player
 
-randomtestresult.out: randomtestadventurer randomtestcard1 randomtestcard2 playdom
-    ./randomtestadventurer >> ./randomtestadventurer.out
-    eho "CARD TEST ADVENTURER" >> randomtestresult.out
-    gov dominion.c >> randomtestresult.out
+randomtestresultout:
+	./randomtestadventurer &> randomtestadventurer.out
+	gcov dominion.c >> randomtestadventurer.out
+	cat dominion.c.gcov >> randomtestadventurer.out
 
-    ./randomtestcard1 >> ./randomtestcard1.out
-    eho "CARD TEST CUTPURSE" >> randomtestresult.out
-    gov dominion.c >> randomtestresult.out
+	./randomtestcard1 &> randomtestcard1.out
+	gcov dominion.c >> randomtestcard1.out
+	cat dominion.c.gcov >> randomtestcard1.out
 
-    ./randomtestcard2 >> ./randomtestcard2.out
-    eho "CARD TEST SMITHY" >> randomtestresult.out
-    gov dominion.c >> randomtestresult.out
+	./randomtestcard2 &> randomtestcard2.out
+	gcov dominion.c >> randomtestcard2.out
+	cat dominion.c.gcov >> randomtestcard2.out
 
 unittestresults.out: unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 playdom
 	./unittest1 >> unittestresults.out
@@ -89,8 +91,6 @@ unittestresults.out: unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2
 	./playdom 3 >> unittestresults.out
 	echo "GCOV AFTER PLAYING A GAME" >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
-
-all: playdom player
 
 clean:
 	rm -f *.o playdom.exe playdom test.exe test player unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 player.exe testInit testInit.exe *.gcov *.gcda *.gcno *.so *.a *.dSYM
