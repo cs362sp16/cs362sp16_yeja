@@ -1,0 +1,3 @@
+The random generator testing was a lot more efficient and accurate compare to unit testing. It is a lot more successfuly
+because it generated many time to test and check the functions. The adventurer card has a %100 test coverage, which I was
+very surprised. 
