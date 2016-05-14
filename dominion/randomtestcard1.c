@@ -32,7 +32,7 @@ void check_asserts(){
 
 int main(int argc, char* argv[]){
 
-    int p, i, j;
+    int i, j;
     struct gameState G;
     int seed = 0;
     int numPlayer = rand() % MAX_PLAYER;
@@ -46,9 +46,9 @@ int main(int argc, char* argv[]){
 
     printf("Testing the card Cutpurse by randmom generation");
 
-    for(i = 0, i < NUM_TEST; i++){
+	for (i = 0; i < NUM_TEST; i++){
         j = initializedGame(((numPlayer) + 1), k, rand(), &G);
-        j = cardEffect(cutpurse, state1, state2, state3, &G, 0, &x);
+        j = cardEffect(cutpurse, state1, state2, state3, &G, 0, 0);
 
         my_assert(j == 0, "Random Testing failed");
 

@@ -12,9 +12,9 @@
 int failure = 0;
 int success = 0;
 
-int my_assert(int x, char* message){
-    if(x == 0){
-        printf("assertion failed %\n",message);
+int my_assert(int x, int y, char* message){
+    if(x != y){
+        printf("Test failed %\n",message);
         failure = 1;
 	}
 	else{
@@ -33,8 +33,8 @@ void check_asserts(){
 int main(int argc, char *argv[]){
 
     struct gameState G;
-    seed = (int)argv[1];
-    srand(seed);
+    
+    srand(time(NULL));
     int i, num = 0;
 
     printf("Testing the card Smithy by random generation");
@@ -45,10 +45,13 @@ int main(int argc, char *argv[]){
         initializeGame(MAX_PLAYER, k, rand(), &G);
 
          G.handCount[num] = rand() % MAX_HAND;
-         handCount = G.handCount[num];
+         int numCardInHand = G.handCount[num];
 
-         cardEffect(handCount + 2, G, handCount[num], "Number of cards in your hand")
+		 cardEffect(smithy ,0, 0, 0, &G, 0, 0);
+
+		 my_assert(numCardInHand + 2, G.handCount[num], "Number of Cards in Hand");
     }
 
+    printf("Testing complete");
     return 0;
 }
