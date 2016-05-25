@@ -100,6 +100,15 @@ randomtestresult.out: randomtestadventurer randomtestcard1 randomtestcard2 playd
 	./randomtestcard2 >> randomtestcard2.out
 	echo "CARD TEST FOR SMITHY: " >> randomtestresult.out
 	gcov dominion.c >> randomtestcard2.out
-	
+
+testdominion: testdominion.c dominion.o rngs.o
+	gcc -o testdominion -std=c99 testdominion.c dominion.o rngs.o $(CFLAGS)
+	rm -f testdominion.out
+	./testdominion 42 >> testdominion.out
+
+testdominion.diff: testdominion.c dominion.o rngs.o
+	gcc -o testdominion -std=c99 testdominion.c dominion.o rngs.o $(CFLAGS)
+
+
 clean:
 	rm -f *.o playdom.exe playdom test.exe test player unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 player.exe testInit testInit.exe *.gcov *.gcda *.gcno *.so *.a *.dSYM
