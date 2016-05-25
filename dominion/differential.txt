@@ -1,0 +1,14 @@
+It is quite hard to identify the output of my friend's dominion code with the seed 1.
+Our result of random testing are different, but our coverages are about the same. Also,
+it is hard for us to decide who is correct because identifying where the idea and
+testing went wrong is difficult.
+
+Coverage for my dominion:
+File 'dominion.c'
+Lines executed:60.59% of 578
+dominion.c:creating 'dominion.c.gcov'
+
+Coverage for my friend's dominion:
+File './cards.c'
+Lines executed:68.32% of 78
+

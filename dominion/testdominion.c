@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 #include <stdlib.h>
 #include <assert.h>
 #include <time.h>
@@ -68,6 +69,7 @@ int cardCheck(enum CARD* arry, enum CARD card, int index){
 
 void randomKingdomCards(int *cards){
     srand(time(NULL));
+	int i;
     for(i = 0; i < 10; i++){
         cards[i] = (enum CARD)(int)floor(Random() * (treasure_map + 1));
         while(cardCheck(cards, cards[i], i - 1)){
@@ -76,25 +78,6 @@ void randomKingdomCards(int *cards){
     }
 }
 
-int countTreasure(struct gameState *g, int player){
-    int card, x = 0;
-    int i;
-    for(i = 0; i < (*g).handCount[player]; i++){
-        treasureCard = g->hand[player][i];
-        if(card == copper){
-            x++;
-        }
-        if(card == silver){
-            x = x+2;
-        }
-        if(card == gold){
-            x = x+3;
-        }
-    }
-    return x;
-}
-
-
 int playerBuyCards(struct gameState *g){
     enum CARD card = randomCard();
     updateCoins(g->whoseTurn, g, 0);
@@ -102,7 +85,7 @@ int playerBuyCards(struct gameState *g){
 
         if(g->coins = 0 || g->numBuys == 0){
              printf("Failed to buy\n");
-             return -1
+			 return -1;
         }
         while(getCost(card) > g->coins || card == curse || g->supplyCount[card] == 0){
             card = randomCard();
@@ -124,11 +107,11 @@ int cardAction(enum CARD *cards, int length){
     return 0;
 }
 
-void playerAction(){
+void playerAction(struct gameState *g){
     int success = 1;
     while(success && g->numActions > 0){
         while(cardAction(g->hand[g->whoseTurn],g->handCount[g->whoseTurn])){
-            success = playCard(g) = -1 ? 0 : 1;
+            success = playCards(g) == -1 ? 0 : 1;
         }
     }
 }
@@ -145,36 +128,24 @@ int getCardIndex(struct gameState *g){
     }
     int randmonCardIndex = (int)floor(Random()*handCount);
 
-    while(!currentHand[randmonCardIndex] >= adventurer && currentHand[randmonCardIndex] <= treasure_map)){
+    while(!(currentHand[randmonCardIndex] >= adventurer && currentHand[randmonCardIndex] <= treasure_map)){
         randmonCardIndex = (int)floor(Random()*handCount);
     }
 
-    return randmonIndex;
+    return randmonCardIndex;
 }
 
 int playCards(struct gameState *g){
     int randmonCardIndex, result;
     enum CARD *currentCard;
 
-    randmonIndex = getCardIndex(g);
+    randmonCardIndex = getCardIndex(g);
     currentCard = g->hand[g->whoseTurn][randmonCardIndex];
     result = playCard(randmonCardIndex, 0, 0, 0, &g);
 
     printf("You played : %d", currentCard, " card\n");
 
     return result;
-}
-
-void getGameWinner(struct gameState *g){
-    printf("Game over");
-    int i;
-    int winner[4];
-    getWinner(winner, &g)
-    for(i = 0; i < g.numPlayers; i++){
-        if(winner[i]){
-            printf("Player %d WON!\n", i);
-        }
-    }
 }
 
 void randomGamePlay(long seed){
@@ -194,7 +165,15 @@ void randomGamePlay(long seed){
         printf("Score for Player %d\n", i, scoreFor(i, &g));
     }
 
-    getGameWinner(&g);
+	printf("Game over");
+	int winner[4];
+	int j;
+	getWinners(winner, &g);
+	for (j = 0; j < g.numPlayers; j++){
+		if (winner[j]){
+			printf("Player %d WON!\n", j);
+		}
+	}
 }
 
 int main(int argc, char** argv[]){
