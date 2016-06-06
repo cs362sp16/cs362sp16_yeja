@@ -98,21 +98,15 @@ def count_digits(n):
     return count
 
 def printred(msg):
-    '''
-    TODO: write comment
-    '''
+   
     print '\033[91m' + msg + '\033[0m'
 
 def printgreen(msg):
-    '''
-    TODO: write comment
-    '''
+
     print '\033[92m' + msg + '\033[0m'
 
 def printyellow(msg):
-    '''
-    TODO: write comment
-    '''
+
     print '\033[93m' + msg + '\033[0m'
 
 if __name__ == '__main__':
