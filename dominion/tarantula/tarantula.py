@@ -61,7 +61,7 @@ def main():
         msg = str(i).rjust(width) + ':' + line[:-1]
         if passed[i] > 0 or failed[i] > 0:
             # some test executed this line
-            temp = suspiciousness(passed[i], failed[i], totalp, totalf)
+            temp = strange_unit(passed[i], failed[i], totalp, totalf)
             if temp == 0:
                 #passing lines
                 printc_green(msg)
@@ -76,7 +76,7 @@ def main():
         i += 1
 
 
-def strange_coverage_unit(passed, failed, totalp, totalf):
+def strange_unit(passed, failed, totalp, totalf):
     nume = failed / totalf
     denom = passed / totalp + nume
 
