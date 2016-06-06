@@ -1,0 +1,4 @@
+For this report, I used random and unit testing for this person's code. I have discovered a bug where one of
+the card is incorrect. The card steward has an error which it doesn't discard the right amount of cards when played.
+During my testing, it failed to do so. The function only discard one card instead of two cards. To fix this, simply
+add another discardCard() on line 876.

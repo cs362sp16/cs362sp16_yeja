@@ -1,0 +1,39 @@
+For this report, I have used random test, unit test, and GDB for my own code.
+
+Before I started debugging, I have to know where and how the bugs occur. For my randomtestcard 2, it did not
+fully cover the entire card based on the lack of testing and bugs. randomtestcard 2 test for my smithy card, and
+I used random testing for it. When I did the random test for smithy, the result showed that the player's handcount was
+incorrect after smithy was played.
+
+Although I have little experience with GDB, I have used it for the purpose of this project. After I ran my testDominion
+with GDB, I slowly look through the program to find the problem for the card Smithy. I have noticed that my hand count
+cards did not add up correctly after Smithy was played. I went back to my function for testing and added printing
+statements. I finally found the tiny bug that was hidden inside the statement of my assert. The card only added two
+cards into player's hand instead of three cards. The numCardHand should have an additional of 3 since the Smithy's
+action allows player to draw three cards. Although the file is executable, the logic was incorrect when ran in
+testdominion.
+
+for(i = 0; i < NUM_TEST; i++){
+        initializeGame(MAX_PLAYER, k, rand(), &G);
+
+         G.handCount[num] = rand() % MAX_HAND;
+         int numCardInHand = G.handCount[num];
+
+		 cardEffect(smithy ,0, 0, 0, &G, 0, 0);
+
+		 my_assert(numCardInHand + 2, G.handCount[num], "Number of Cards in Hand");
+}
+
+Agan's Rules:
+1. Understand the System
+    Before I started debugging, I looked and analyzed the rules and effects of each cards for this game. Once I
+    understand the logic of the game, I knew how to debug.
+2. Make it Fail
+    Every time I test for my program, it failed or show errors logically. This is not technologically a bad thing,
+    because it shows where and how to fix my problems.
+3. Change One Thing at a Time
+    It was not smart of me to run the program based on what I have in the randomtesting files. I should have test
+    little code independently as I write my code so that I don't have to waste so much time finding bugs at the end.
+4. Got a Fresh View
+    Since my randmontestcard2 that check for Smithy, the bug was very hard to identify due to the small amount of coding
+    in the file. GDB was hard but effective tool to locate the bug, even though it took me quite a long time to find it.

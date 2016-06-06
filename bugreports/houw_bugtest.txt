@@ -1,0 +1,8 @@
+For this report, I used random and unit testing for this person's code. I have discovered two bugs that makes
+the card game incorrect. One of the bug he has is the card effect for great hall. Although the function is executable,
+the effect of the card function is incorrect. It does not allow the player to draw a card after Great Hall is played.
+On line 684, it should have a drawCard(player,state) function inside of cardEffect_great_hall().
+
+Another bug that I have found in this person's code is the function card smithy. The function was executable, but
+my testing shows that the 4th player's hand card number does not change. It has shown that after the card was
+played, the 4th player's hand card number did not changed due to the logic error in the for loop. In line 665, the

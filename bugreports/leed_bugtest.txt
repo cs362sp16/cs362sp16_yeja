@@ -1,0 +1,4 @@
+For this report, I used random and unit testing for this person's code. While testing, I found a bug in one of the
+card. The card named adventurer has an error which it does not show the right amount of cards in the player's hand
+after it was played. The player's handCount should decrease if it was played right. To fix this, simply make the
+handCount decrement by one after two treasure card has drawn.
